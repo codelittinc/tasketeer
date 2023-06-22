@@ -1,0 +1,124 @@
+.blackDawnIcon {
+  margin-bottom: 27px;
+}
+
+.grid {
+  margin-bottom: 104px;
+  position: relative;
+}
+
+.mainGridItem {
+  background-color: var(--complementary200);
+  border-radius: 56px;
+}
+
+.contentSection {
+  display: flex;
+  padding: 62px 20px 56px 40px;
+}
+
+.sectionHeader {
+  color: var(--neutral1000);
+  font-family: "Clash Display";
+  font-style: normal;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 56px;
+  margin: 0;
+}
+
+.tasketeerMascotContainer {
+  bottom: -7px;
+  right: 40px;
+  position: absolute;
+}
+
+.tasketeerMascotImage {
+  height: 324px;
+  width: 229px;
+}
+
+.integrationsGrid {
+  align-items: end;
+  display: flex;
+  justify-content: center;
+}
+
+.integrationsTitle {
+  color: var(--neutral1000);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 0 8px;
+}
+
+.integrationBox {
+  align-items: center;
+  background-color: var(--neutral100);
+  border-radius: 56px;
+  display: flex;
+  height: 36px;
+  padding: 0 16px;
+  position: relative;
+  width: fit-content;
+}
+
+.integrationBox:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.integrationIcon {
+  height: 20px;
+  margin-right: 6px;
+  width: 20px;
+}
+
+.integrationBoxText {
+  color: var(--neutral1000);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1199px) {
+  .tasketeerMascotContainer {
+    right: -10px;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .grid {
+    margin-bottom: 117px;
+  }
+
+  .contentSection {
+    padding: 34px 38px 63px;
+  }
+
+  .sectionHeader {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    line-height: 32px;
+    margin-bottom: 24px;
+  }
+
+  .integrationsGrid {
+    display: initial;
+  }
+
+  .tasketeerMascotImage {
+    height: 225px;
+    width: 158px;
+  }
+
+  .blackDawnIcon {
+    margin-bottom: 12px;
+  }
+
+  .tasketeerMascotContainer {
+    bottom: -81px;
+    right: -16px;
+  }
+}

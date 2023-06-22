@@ -1,0 +1,186 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 104px;
+
+  .tabsContainer {
+    display: flex;
+    gap: 16px;
+    height: 128px;
+  }
+
+  .tabGrey,
+  .tabPurple,
+  .tabOrange,
+  .tabYellow,
+  .tabGreyActive,
+  .tabPurpleActive,
+  .tabOrangeActive,
+  .tabYellowActive {
+    border-radius: 24px;
+    cursor: pointer;
+    font-family: "Clash Display";
+    font-size: 24px;
+    font-weight: 500;
+    height: 112px;
+    line-height: 32px;
+    padding: 24px;
+    position: relative;
+    text-align: left;
+    width: 264px;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tabGrey {
+    background-color: var(--neutral200);
+    color: var(--neutral1000);
+  }
+
+  .tabPurple {
+    background-color: var(--primary200);
+  }
+
+  .tabOrange {
+    background-color: var(--complementary100);
+    color: var(--neutral1000);
+  }
+
+  .tabYellow {
+    background-color: var(--complementary200);
+    color: var(--neutral1000);
+  }
+
+  .tabGreyActive {
+    background-color: var(--neutral200);
+    color: var(--neutral1000);
+    height: 168px;
+  }
+
+  .tabPurpleActive {
+    background-color: var(--primary200);
+    height: 168px;
+  }
+
+  .tabOrangeActive {
+    background-color: var(--complementary100);
+    color: var(--neutral1000);
+    height: 168px;
+  }
+
+  .tabYellowActive {
+    background-color: var(--complementary200);
+    color: var(--neutral1000);
+    height: 168px;
+  }
+
+  .tabGreyActive:after,
+  .tabPurpleActive:after,
+  .tabOrangeActive:after,
+  .tabYellowActive:after {
+    background: transparent;
+    border-bottom-left-radius: 50%;
+    box-shadow: 0 20px 0 0 var(--neutral200);
+    content: "";
+    height: 40px;
+    left: 264px;
+    position: absolute;
+    top: 88px;
+    width: 40px;
+  }
+
+  .tabPurpleActive:after {
+    box-shadow: 0 20px 0 0 var(--primary200);
+  }
+
+  .tabOrangeActive:after {
+    box-shadow: 0 20px 0 0 var(--complementary100);
+  }
+
+  .tabYellowActive:after {
+    box-shadow: 0 10px 0 0 var(--complementary200);
+    left: 224px;
+    top: 135px;
+    transform: rotate(245deg);
+  }
+
+  .tabGreyActive:before {
+    content: "";
+    position: absolute;
+    top: 112px;
+    left: 20px;
+    border-top: 2px solid var(--neutral1000);
+    width: 221px;
+  }
+
+  .tabPurpleActive:before,
+  .tabOrangeActive:before,
+  .tabYellowActive:before {
+    background: transparent;
+    border-bottom-right-radius: 50%;
+    box-shadow: 0 20px 0 0 var(--primary200);
+    content: "";
+    height: 40px;
+    right: 264px;
+    position: absolute;
+    top: 88px;
+    width: 40px;
+  }
+
+  .tabOrangeActive:before {
+    box-shadow: 0 20px 0 0 var(--complementary100);
+  }
+
+  .tabYellowActive:before {
+    box-shadow: 0 20px 0 0 var(--complementary200);
+  }
+
+  .featureDescription {
+    border-radius: 24px;
+    display: flex;
+    height: 344px;
+    max-width: 1114px;
+    padding: 40px 24px 48px 24px;
+  }
+
+  .descriptionGrey {
+    background-color: var(--neutral200);
+    color: var(--neutral1000);
+  }
+
+  .descriptionPurple {
+    background-color: var(--primary200);
+  }
+
+  .descriptionOrange {
+    background-color: var(--complementary100);
+    color: var(--neutral1000);
+  }
+
+  .descriptionYellow {
+    background-color: var(--complementary200);
+    color: var(--neutral1000);
+  }
+
+  .descriptionsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    width: 550px;
+
+    .description {
+      width: 263px;
+    }
+  }
+
+  .chatContainer{
+    padding: 24px 0 0 60px;
+    width: 516px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,111 @@
+version: '2'
+services:
+  db:
+    image: postgres
+    container_name: tasketeer-db
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    ports:
+      - '5432:5432'
+
+  redis:
+    container_name: tasketeer-redis
+    image: "redis:alpine"
+    ports:
+      - '6379:6379'
+
+  notifications-api:
+    container_name: tasketeer-notifications-api
+    image: "codelittinc/notifications:latest"
+    ports:
+      - '3001:3000'
+    expose:
+      - 3000
+    env_file:
+      - .env.notifications
+    depends_on:
+      - db
+      - redis
+  
+  nlp:
+    container_name: tasketeer-nlp
+    image: "codelittinc/tasketeer-nlp-processor:latest"
+    ports:
+      - '5001:5001'
+    env_file:
+      - .env.nlp
+    depends_on:
+      - nlp-mongodb
+      - redis
+    links:
+      - nlp-mongodb
+      - redis
+      - notifications-api
+  
+  nlp-mongodb:
+    image: mongo:6.0
+    restart: always
+    volumes:
+      - ~/mongo:/data/db
+    container_name: tasketeer-nlp-mongodb
+    ports:
+      - "27017:27017"
+    env_file:
+      - .env.nlp
+
+  app:
+    container_name: tasketeer-api
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+      - box
+      - redis
+      - notifications-api
+      - nlp
+    links:
+      - db
+      - box
+      - redis
+      - nlp
+
+  sidekiq:
+    container_name: tasketeer-sidekiq
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      target: development
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - box
+      - redis
+      - nlp
+      - notifications-api
+    links:
+      - db
+      - box
+      - redis
+      - nlp
+      - notifications-api
+
+  box:
+    container_name: tasketeer-bundle-box
+    image: busybox
+    volumes:
+      - /box

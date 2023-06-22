@@ -1,0 +1,25 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  height: 80px;
+  justify-content: end;
+  margin-top: auto;
+}
+
+.dropzone {
+  background-color: var(--neutral1000);
+  border-radius: 24px;
+  border: 2px dashed var(--neutral600);
+  cursor: pointer;
+  padding: 32px;
+}
+
+.dropzone:hover {
+  background-color: var(--neutral900);
+}

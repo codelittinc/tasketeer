@@ -1,0 +1,61 @@
+name: CI
+
+env:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: "postgres"
+  POSTGRES_DB: postgres
+  POSTGRES_HOST: localhost
+  RAILS_ENV: test
+  NOTIFICATIONS_API_URL: https://api.notifications.codelitt.dev
+  GPT_KEY: ${{ secrets.GPT_KEY }}
+
+on:
+  push:
+    branches: ["*/*"]
+  workflow_dispatch:
+
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Install gems
+        run: |
+          bundle install
+
+      - name: Create Database
+        run: bundle exec rake db:create
+        env:
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+
+      - name: Run migrations
+        run: bundle exec rake db:migrate
+        env:
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+
+      - name: Run Rubocop
+        run: bundle exec rubocop
+
+      - name: Run RSpec
+        run: bundle exec rspec
+
+      - name: Run db:seed
+        run: bundle exec rails db:seed # guarantees the seeds aren't breaking

@@ -1,0 +1,109 @@
+{
+  "token": "8Pek4iyx6eIbApSPbhAnA9Lm",
+  "team_id": "T029Q9LHJ",
+  "context_team_id": "T029Q9LHJ",
+  "context_enterprise_id": null,
+  "api_app_id": "ASVNL9492",
+  "event": {
+    "client_msg_id": "b4599bd6-e017-4c57-a90c-39d2d5f5f295",
+    "type": "message",
+    "text": "is kaio a robot?",
+    "user": "UJFK67A1H",
+    "ts": "1677617038.461199",
+    "blocks": [
+      {
+        "type": "rich_text",
+        "block_id": "G3=CO",
+        "elements": [
+          {
+            "type": "rich_text_section",
+            "elements": [
+              {
+                "type": "text",
+                "text": "Lorem ipsum dolor sit amet, "
+              },
+              {
+                "type": "text",
+                "text": "consectetur",
+                "style": {
+                  "bold": true
+                }
+              },
+              {
+                "type": "text",
+                "text": " adipiscing elit, "
+              },
+              {
+                "type": "text",
+                "text": "sed do eiusmod",
+                "style": {
+                  "italic": true
+                }
+              },
+              {
+                "type": "text",
+                "text": " tempor incididunt ut labore et dolore magna aliqua.\n"
+              }
+            ]
+          },
+          {
+            "type": "rich_text_list",
+            "elements": [
+              {
+                "type": "rich_text_section",
+                "elements": [
+                  {
+                    "type": "text",
+                    "text": "Ut enim ad minim veniam"
+                  }
+                ]
+              },
+              {
+                "type": "rich_text_section",
+                "elements": [
+                  {
+                    "type": "text",
+                    "text": "quis nostrud exercitation ullamco"
+                  }
+                ]
+              }
+            ],
+            "style": "bullet",
+            "indent": 0,
+            "border": 0
+          },
+          {
+            "type": "rich_text_section",
+            "elements": [
+              {
+                "type": "text",
+                "text": "fugiat nulla pariatur?"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "team": "T029Q9LHJ",
+    "channel": "DSX1REERE",
+    "event_ts": "1677617038.461199",
+    "channel_type": "im"
+  },
+  "type": "event_callback",
+  "event_id": "Ev04SE8T8RPS",
+  "event_time": 1677617038,
+  "authed_users": [
+    "USYCS7QHL"
+  ],
+  "authorizations": [
+    {
+      "enterprise_id": null,
+      "team_id": "T029Q9LHJ",
+      "user_id": "USYCS7QHL",
+      "is_bot": true,
+      "is_enterprise_install": false
+    }
+  ],
+  "is_ext_shared_channel": false,
+  "event_context": "4-eyJldCI6Im1lc3NhZ2UiLCJ0aWQiOiJUMDI5UTlMSEoiLCJhaWQiOiJBU1ZOTDk0OTIiLCJjaWQiOiJEU1gxUkVFUkUifQ"
+}

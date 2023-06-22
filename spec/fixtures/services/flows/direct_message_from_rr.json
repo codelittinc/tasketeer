@@ -1,0 +1,66 @@
+{
+  "token": "8Pek4iyx6eIbApSPbhAnA9Lm",
+  "team_id": "T029Q9LHJ",
+  "context_team_id": "T029Q9LHJ",
+  "context_enterprise_id": null,
+  "api_app_id": "ASVNL9492",
+  "event": {
+    "bot_id": "BSW6NEU5N",
+    "type": "message",
+    "text": "Message received!",
+    "user": "USYCS7QHL",
+    "ts": "1677672711.219609",
+    "app_id": "ASVNL9492",
+    "blocks": [
+      {
+        "type": "rich_text",
+        "block_id": "sVHd",
+        "elements": [
+          {
+            "type": "rich_text_section",
+            "elements": [
+              {
+                "type": "text",
+                "text": "Message received!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "team": "T029Q9LHJ",
+    "bot_profile": {
+      "id": "BSW6NEU5N",
+      "deleted": false,
+      "name": "Roadrunner",
+      "updated": 1677435549,
+      "app_id": "ASVNL9492",
+      "icons": {
+        "image_36": "https://avatars.slack-edge.com/2020-01-20/901740758338_7de919de0c79c2b1b800_36.jpg",
+        "image_48": "https://avatars.slack-edge.com/2020-01-20/901740758338_7de919de0c79c2b1b800_48.jpg",
+        "image_72": "https://avatars.slack-edge.com/2020-01-20/901740758338_7de919de0c79c2b1b800_72.jpg"
+      },
+      "team_id": "T029Q9LHJ"
+    },
+    "channel": "DSX1REERE",
+    "event_ts": "1677672711.219609",
+    "channel_type": "im"
+  },
+  "type": "event_callback",
+  "event_id": "Ev04RWNVN8BW",
+  "event_time": 1677672711,
+  "authed_users": [
+    "USYCS7QHL"
+  ],
+  "authorizations": [
+    {
+      "enterprise_id": null,
+      "team_id": "T029Q9LHJ",
+      "user_id": "USYCS7QHL",
+      "is_bot": true,
+      "is_enterprise_install": false
+    }
+  ],
+  "is_ext_shared_channel": false,
+  "event_context": "4-eyJldCI6Im1lc3NhZ2UiLCJ0aWQiOiJUMDI5UTlMSEoiLCJhaWQiOiJBU1ZOTDk0OTIiLCJjaWQiOiJEU1gxUkVFUkUifQ"
+}

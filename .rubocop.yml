@@ -1,0 +1,14 @@
+inherit_from: .rubocop_todo.yml
+
+require: rubocop-rails
+
+# Enable all rubocop new cops between versions
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*
+    - config/initializers/*

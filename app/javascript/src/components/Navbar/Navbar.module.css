@@ -1,0 +1,40 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 20px 32px 80px 32px;
+}
+
+.sidebarHeaderContainer {
+  display: flex;
+}
+
+.navLogoContainer {
+  align-items: center;
+  display: flex;
+  width: fit-content;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.loginIcon {
+  margin-left: 12.37px;
+}
+
+.mobileLinkText {
+  font-family: "Clash Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .signupButton {
+    display: none;
+  }
+}

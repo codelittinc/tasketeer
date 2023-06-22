@@ -1,0 +1,144 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://api.notifications.codelitt.dev/api/provider?team_id=T029Q9LHJ
+      body:
+        encoding: US-ASCII
+        string: ""
+      headers:
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+        User-Agent:
+          - Ruby
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Server:
+          - Cowboy
+        Date:
+          - Tue, 31 Jan 2023 18:31:30 GMT
+        Connection:
+          - keep-alive
+        X-Frame-Options:
+          - SAMEORIGIN
+        X-Xss-Protection:
+          - 1; mode=block
+        X-Content-Type-Options:
+          - nosniff
+        X-Download-Options:
+          - noopen
+        X-Permitted-Cross-Domain-Policies:
+          - none
+        Referrer-Policy:
+          - strict-origin-when-cross-origin
+        Content-Type:
+          - application/json; charset=utf-8
+        Vary:
+          - Accept
+        Etag:
+          - W/"e8e98768123683faf07ea4586bb803ae"
+        Cache-Control:
+          - max-age=0, private, must-revalidate
+        X-Request-Id:
+          - 3e18bb67-ae10-45bd-aecf-5a55dd37f9e7
+        X-Runtime:
+          - "0.003559"
+        Transfer-Encoding:
+          - chunked
+        Via:
+          - 1.1 vegur
+      body:
+        encoding: UTF-8
+        string: '{"id":5}'
+    recorded_at: Tue, 31 Jan 2023 18:31:31 GMT
+  - request:
+      method: post
+      uri: https://api.openai.com/v1/completions
+      body:
+        encoding: UTF-8
+        string:
+          '{"model":"text-davinci-003","prompt":"write a blogpost about how to
+          release ruby on rails applications","max_tokens":1000}'
+      headers:
+        Content-Type:
+          - application/json
+        Authorization:
+          - Bearer <SENSITIVE_DATA>
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+        User-Agent:
+          - Ruby
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Date:
+          - Thu, 05 Jan 2023 16:09:58 GMT
+        Content-Type:
+          - application/json
+        Transfer-Encoding:
+          - chunked
+        Connection:
+          - keep-alive
+        Access-Control-Allow-Origin:
+          - "*"
+        Cache-Control:
+          - no-cache, must-revalidate
+        Openai-Model:
+          - text-davinci-003
+        Openai-Organization:
+          - user-hop74vdj6hwyyrnbhhq22cot
+        Openai-Processing-Ms:
+          - "15229"
+        Openai-Version:
+          - "2020-10-01"
+        Strict-Transport-Security:
+          - max-age=15724800; includeSubDomains
+        X-Request-Id:
+          - a1710a78b5de7b2fd093e128577f2ae7
+      body:
+        encoding: UTF-8
+        string:
+          '{"id":"cmpl-6VN6FyuG1yjacCBXsgbiQelJVZy3w","object":"text_completion","created":1672934983,"model":"text-davinci-003","choices":[{"text":"\n\nReleasing
+          a Ruby on Rails application is an important step for any Rails developer.
+          Whether you’re releasing a client-facing application or releasing something
+          public, there are a few things you should know before you get started. In
+          this blog post, we’ll explore the steps you need to take to successfully release
+          your Ruby on Rails application and ensure everything is running smoothly.\n\n1.
+          Create a Staging Environment\n\nBefore releasing your application, it’s important
+          to create a staging environment. This is a safe test environment that allows
+          you to test new features, flaws in the system, and any impending changes or
+          bugs before you roll out something to the public. Having a staging environment
+          also allows you to have a pre-production instance of your application that
+          you can demo to potential customers.\n\n2. Security Check\n\nBefore you release
+          your application, you need to do a security check to make sure everything
+          is up-to-date and functioning correctly. This involves testing your authentication
+          system and ensuring that your data is secure. You should also audit your server
+          and ensure that you are running the latest version of Ruby on Rails.\n\n3.
+          Test Thoroughly\n\nYou’ll want to test your application thoroughly before
+          releasing it. This means running through every scenario and making sure that
+          everything is working as expected. This can be a time-consuming process, but
+          it will help ensure that your application is released with minimal bugs and
+          flaws.\n\n4. Deployment\nHeroku, Amazon Web Services, and other cloud providers
+          all make deployment much easier. With these tools, you can deploy your application
+          with just a few clicks and be up and running in no time. There are also tools
+          like Capistrano for automated deployments, which can save you time and energy.\n\n5.
+          Get Feedback\nOnce you have deployed your application, it’s important to get
+          feedback from users. You can do this in multiple ways, such as through surveys,
+          feedback forms, or user testing. This will help you discover any problems
+          that you may have missed during the development phase and give you a better
+          idea of how your application is being used by your customers.\n\nReleasing
+          a Ruby on Rails application can be a complicated process, but it doesn’t have
+          to be. By following the steps outlined here, you’ll be able to successfully
+          launch your application with confidence.","index":0,"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":12,"completion_tokens":489,"total_tokens":501}}
+          '
+    recorded_at: Tue, 31 Jan 2023 18:31:31 GMT
+recorded_with: VCR 6.1.0

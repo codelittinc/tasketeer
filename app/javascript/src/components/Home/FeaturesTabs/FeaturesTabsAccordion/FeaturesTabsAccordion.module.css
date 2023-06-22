@@ -1,0 +1,22 @@
+.tabTitle {
+  font-family: "Clash Display";
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  margin: 0;
+}
+
+.chatContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+@media screen and (max-width: 665px) {
+  .chatContainer {
+    max-width: 340px;
+    overflow: hidden;
+  }
+}

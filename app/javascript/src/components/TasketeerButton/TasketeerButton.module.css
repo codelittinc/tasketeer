@@ -1,0 +1,81 @@
+.button {
+  align-items: center;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+}
+
+.primaryButton {
+  background-color: var(--primary200);
+  color: var(--neutral100);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.primaryButton:hover {
+  background-color: var(--primary300);
+}
+
+.primaryButton:focus {
+  outline: 1px solid var(--primary100);
+}
+
+.secondaryButton {
+  background-color: var(--neutral100);
+  color: var(--neutral1000);
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.secondaryButton:hover {
+  background-color: var(--secondary200);
+}
+
+.secondaryButton:focus {
+  outline: 1px solid var(--primary100);
+}
+
+.tertiaryButton {
+  background-color: var(--neutral900);
+  border: 1px solid var(--neutral800);
+  color: var(--neutral100);
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.tertiaryButton:hover {
+  background-color: var(--tertiary300);
+  color: var(--neutral500);
+}
+
+.buttonMedium {
+  padding: 8px 16px;
+}
+
+.buttonLarge {
+  padding: 12px 32px;
+}
+
+.buttonExtraLarge {
+  font-family: "Clash Display";
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 40px;
+  padding: 16px 40px;
+}
+
+.QuaternaryButton {
+  background-color: transparent;
+  border: none;
+  color: var(--neutral100);
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0;
+}
+
+.QuaternaryButton:hover {
+  color: var(--neutral500);
+}

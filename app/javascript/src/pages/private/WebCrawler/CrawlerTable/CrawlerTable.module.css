@@ -1,0 +1,37 @@
+.indexed {
+  background-color: #1A2A0F;
+  width: auto;
+  border-radius: 24px;
+  padding: 4px 8px;
+  width: 90px;
+  text-align: center;
+  color: #B8D3A7
+}
+
+.dotIndexed {
+  height: 8px;
+  width: 8px;
+  background-color: #B8D3A7;
+  border-radius: 50%;
+  float: left;
+  margin-top: 5px;
+}
+
+.inProgress {
+  background-color: #39210B;
+  width: auto;
+  border-radius: 24px;
+  padding: 4px 8px;
+  width: 112px;
+  text-align: center;
+  color: #FED09A
+}
+
+.dotInProgress {
+  height: 8px;
+  width: 8px;
+  background-color: #FED09A;
+  border-radius: 50%;
+  float: left;
+  margin-top: 5px;
+}

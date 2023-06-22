@@ -1,0 +1,5 @@
+#MAINTAINER Kaio Magalhaes, Inc.
+
+touch .env
+docker-compose up -d
+docker exec -it tasketeer-api bash

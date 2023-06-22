@@ -1,0 +1,93 @@
+.logoContainer {
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.headingContainer {
+  width: 100%;
+}
+
+.header {
+  font-family: 'Clash Display';
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 40px;
+  margin: 0 0 4px;
+}
+
+.headingSubLabel {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 0 16px;
+}
+
+.field {
+  border: 2px solid var(--neutral500);
+  border-radius: 12px;
+}
+
+.passwordLegend {
+  color: var(--neutral500);
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.signUpText {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  text-align: center;
+  height: 1.5em;
+  margin: 32px 0 16px;
+}
+
+.signUpText:before {
+  content: '';
+  background: var(--neutral100);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+}
+
+.signUpText:after {
+  content: attr(data-content);
+  position: relative;
+  display: inline-block;
+  color: var(--neutral100);
+  padding: 0 .5em;
+  line-height: 1.5em;
+  background-color: #121212;
+}
+
+.signUpButton {
+  background-color: var(--primary200);
+  border-radius: 12px;
+  border: 0;
+  color: var(--neutral100);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  margin: 4px 0 48px;
+  width: 100%;
+}
+
+.signUpButton:disabled {
+  background-color: var(--neutral600);
+}
+
+.footerText {
+  text-decoration: none;
+}
+
+.footerInnerText {
+  font-weight: 600;
+}

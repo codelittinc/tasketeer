@@ -1,0 +1,22 @@
+:root {
+  --primary100: #9492ef;
+  --primary200: #423fd4;
+  --primary300: #1f1d82;
+  --secondary100: #ffffff;
+  --secondary200: #d2d1d1;
+  --neutral100: #ffffff;
+  --neutral200: #ebebeb;
+  --neutral300: #e0e0e0;
+  --neutral400: #c7c7c7;
+  --neutral500: #adadad;
+  --neutral600: #7a7a7a;
+  --neutral700: #616161;
+  --neutral800: #333333;
+  --neutral900: #1a1a1a;
+  --neutral1000: #000000;
+  --complementary100: #ff722d;
+  --complementary200: #feca43;
+  --complementary300: #b298fe;
+  --tertiary100: #fd6317;
+  --tertiary200: #f5b002;
+}

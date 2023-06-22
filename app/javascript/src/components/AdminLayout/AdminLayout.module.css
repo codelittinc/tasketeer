@@ -1,0 +1,39 @@
+a.button {
+  color: white;
+  padding: 12px 16px;
+  gap: 8px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.button span {
+  font-weight: 600;
+}
+
+.buttonIcon {
+  height: 20px;
+  margin-right: 6px;
+  width: 20px;
+}
+
+.buttonIcon svg {
+  stroke: white;
+}
+
+.notionIcon svg {
+  background-color: white;
+}
+
+.button.buttonActive {
+  background-color: white !important;
+  color: black;
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+}
+
+.buttonActive .buttonIcon svg {
+  stroke: black;
+}

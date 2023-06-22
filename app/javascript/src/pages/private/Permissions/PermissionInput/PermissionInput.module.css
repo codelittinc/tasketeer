@@ -1,0 +1,11 @@
+.rolesSelect {
+  text-align: end;
+}
+
+.rolesSelect::before {
+  border-bottom: 0 !important;
+}
+
+.rolesSelectLabel {
+  font-style: normal;
+}

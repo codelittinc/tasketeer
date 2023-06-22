@@ -1,0 +1,27 @@
+.container {
+  align-items: flex-start;
+  display: flex;
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 16px;
+  gap: 12px;
+  height: 120px;
+  line-height: 24px;
+  padding: 24px 13px 24px 4px;
+  width: 100%;
+}
+
+.description {
+  margin: 0;
+}
+
+@media screen and (max-width: 665px) {
+  .container {
+    justify-content: center;
+  }
+
+  .description {
+    margin: 0;
+    max-width: 266px;
+  }
+}

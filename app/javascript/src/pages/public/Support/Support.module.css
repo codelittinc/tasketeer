@@ -1,0 +1,9 @@
+.box {
+  margin-top: 112px;
+}
+
+@media screen and (max-width: 900px) {
+  .box {
+    margin-top: 20px;
+  }
+}

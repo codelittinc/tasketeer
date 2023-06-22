@@ -1,0 +1,83 @@
+.container {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .chatUser,
+  .chatTasketeer {
+    color: var(--neutral800);
+    font-family: "Montserrat";
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    margin: 0;
+  }
+
+  .chatTasketeer {
+    color: var(--primary300);
+  }
+
+  .chatText {
+    color: var(--neutral1000);
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0;
+  }
+
+  .chatGrey,
+  .chatPurple,
+  .chatOrange,
+  .chatYellow {
+    align-items: flex-start;
+    background-color: var(--neutral300);
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    padding: 12px 40px 12px 12px;
+    width: 100%;
+  }
+
+  .chatPurple {
+    background-color: var(--primary300);
+
+    .chatUser,
+    .chatTasketeer {
+      color: var(--neutral400);
+    }
+
+    .chatText {
+      color: var(--neutral100);
+    }
+  }
+
+  .chatOrange {
+    background-color: var(--tertiary100);
+
+    .chatUser,
+    .chatTasketeer {
+      color: var(--neutral1000);
+    }
+
+    .chatText {
+      color: var(--neutral100);
+    }
+  }
+
+  .chatYellow {
+    background-color: var(--tertiary200);
+
+    .chatUser,
+    .chatTasketeer {
+      color: var(--neutral700);
+    }
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .container {
+    max-width: 350px;
+  }
+}
