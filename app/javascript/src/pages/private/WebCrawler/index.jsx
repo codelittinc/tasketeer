@@ -117,19 +117,24 @@ const WebCrawlerPage = () => {
 
       <Grid container spacing={2} sx={{ mt: 1 }}>
         <Grid item xs={8}>
-          <p>
-            <FormControlLabel
-              control={(
-                <Checkbox
-                  value={getAllPages}
-                  onChange={() => {
-                    setGetAllPages(!getAllPages);
-                  }}
-                />
-          )}
-              label="Crawl the links starting with the URL (limited to 5 pages)"
-            />
-          </p>
+          <FormControlLabel
+            control={(
+              <Checkbox
+                value={getAllPages}
+                onChange={() => {
+                  setGetAllPages(!getAllPages);
+                }}
+              />
+            )}
+            sx={{
+              fontFamily: 'Montserrat',
+              fontSize: '16px',
+              '& .MuiFormControlLabel-label': {
+                fontWeight: '600',
+              },
+            }}
+            label="Crawl the links starting with the URL (limited to 5 pages)"
+          />
         </Grid>
         <Grid item xs={4}>
           <Button
