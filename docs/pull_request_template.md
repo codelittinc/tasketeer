@@ -4,12 +4,6 @@ If applied, pull request will ... [Please complete the description]
  - minor change one
  - minor change two
 
-### Card Link
-<MY_CARD_LINK>
-
-### Design Expected Screenshot
-<DESIGN_EXPECTED_SCREENSHOT>
-
 ### Implementation Screenshot or GIF
 <MY_SCREENSHOT or MY_GIF>
 

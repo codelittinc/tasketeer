@@ -1,42 +1,42 @@
-import * as React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import { useDispatch } from 'react-redux';
-import CircularProgress from '@mui/material/CircularProgress';
-import Backdrop from '@mui/material/Backdrop';
-import { REACT_APP_ENABLE_SIGN_IN } from 'env';
-import TasketeerSnackbar from './components/TasketeerSnackbar';
-import Home from './pages/public/Home';
-import LoginPage from './pages/public/Login';
-import SignupPage from './pages/public/Signup';
-import AppLayout from './components/AppLayout';
-import styles from './app.module.css';
-import UsersService from './services/users.service';
-import { login } from './features/authSlice';
-import PrivateOutlet from './components/RouteOutlets/PrivateOutlet';
-import OnboardingPage from './pages/private/OnboardingPage';
-import LoggedOutOutlet from './components/RouteOutlets/LoggedOutOutlet';
-import NotFoundPage from './pages/public/NotFound';
-import routes from './constants/routes';
-import PrivacyPage from './pages/public/Privacy';
-import FaqPage from './pages/public/Faq';
-import SupportPage from './pages/public/Support';
-import FilesPage from './pages/private/Files';
-import CreateOrganizationOutlet from './components/RouteOutlets/CreateOrganizationOutlet';
-import OauthSlackPage from './pages/public/Oauth/slack';
-import IntegrationPage from './pages/private/Integration';
-import WaitApprovalPage from './pages/private/WaitApprovalPage';
-import WaitingApprovalOutlet from './components/RouteOutlets/WaitingApprovalOutlet';
-import AdminLayout from './components/AdminLayout';
-import AdminOutlet from './components/RouteOutlets/AdminOutlet';
-import SearchHistoryPage from './pages/private/SearchHistoryPage';
-import ChatPage from './pages/private/Chat';
-import WebCrawlerPage from './pages/private/WebCrawler';
-import CodelittLogo from '../../assets/images/codelitt-logo.svg';
-import COLORS from './utils/colors';
-import PermissionsPage from './pages/private/Permissions';
-import AdminHome from './pages/private/AdminHome';
-import SetupPage from './pages/private/Setup';
+import * as React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Box from "@mui/material/Box";
+import { useDispatch } from "react-redux";
+import CircularProgress from "@mui/material/CircularProgress";
+import Backdrop from "@mui/material/Backdrop";
+import { REACT_APP_ENABLE_SIGN_IN } from "env";
+import TasketeerSnackbar from "./components/TasketeerSnackbar";
+import Home from "./pages/public/Home";
+import LoginPage from "./pages/public/Login";
+import SignupPage from "./pages/public/Signup";
+import AppLayout from "./components/AppLayout";
+import styles from "./app.module.css";
+import UsersService from "./services/users.service";
+import { login } from "./features/authSlice";
+import PrivateOutlet from "./components/RouteOutlets/PrivateOutlet";
+import OnboardingPage from "./pages/private/OnboardingPage";
+import LoggedOutOutlet from "./components/RouteOutlets/LoggedOutOutlet";
+import NotFoundPage from "./pages/public/NotFound";
+import routes from "./constants/routes";
+import PrivacyPage from "./pages/public/Privacy";
+import FaqPage from "./pages/public/Faq";
+import SupportPage from "./pages/public/Support";
+import FilesPage from "./pages/private/Files";
+import CreateOrganizationOutlet from "./components/RouteOutlets/CreateOrganizationOutlet";
+import OauthSlackPage from "./pages/public/Oauth/slack";
+import IntegrationPage from "./pages/private/Integration";
+import WaitApprovalPage from "./pages/private/WaitApprovalPage";
+import WaitingApprovalOutlet from "./components/RouteOutlets/WaitingApprovalOutlet";
+import AdminLayout from "./components/AdminLayout";
+import AdminOutlet from "./components/RouteOutlets/AdminOutlet";
+import SearchHistoryPage from "./pages/private/SearchHistoryPage";
+import ChatPage from "./pages/private/Chat";
+import WebCrawlerPage from "./pages/private/WebCrawler";
+import CodelittLogo from "../../assets/images/codelitt-logo.svg";
+import COLORS from "./utils/colors";
+import PermissionsPage from "./pages/private/Permissions";
+import AdminHome from "./pages/private/AdminHome";
+import SetupPage from "./pages/private/Setup";
 
 export default function App({ cable }) {
   const [pageLoaded, setPageLoaded] = React.useState(false);
@@ -105,12 +105,12 @@ export default function App({ cable }) {
             path={routes.authorizeOauthSlack}
             element={<OauthSlackPage />}
           />
+          <Route path={routes.loginSlack} element={<OauthSlackPage />} />
           <Route path={routes.root} element={<LoggedOutOutlet />}>
-            {REACT_APP_ENABLE_SIGN_IN === 'true' && (
+            {REACT_APP_ENABLE_SIGN_IN === "true" && (
               <Route path={routes.login} element={<LoginPage />} />
             )}
-            <Route path={routes.loginSlack} element={<OauthSlackPage />} />
-            {REACT_APP_ENABLE_SIGN_IN === 'true' && (
+            {REACT_APP_ENABLE_SIGN_IN === "true" && (
               <Route path={routes.signup} element={<SignupPage />} />
             )}
           </Route>
