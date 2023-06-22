@@ -190,7 +190,7 @@ const SignupPage = () => {
               color="inherit"
               fontSize={16}
             >
-              Already have an account?
+              Already have an account?&nbsp;
               <span className={styles.footerInnerText}>Log in</span>
             </Typography>
           </Grid>

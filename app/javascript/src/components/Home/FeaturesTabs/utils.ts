@@ -29,10 +29,10 @@ export const featuresData = [
     color: "Orange",
     title: "Secure and Private Data",
     description: [
-      "We prioritize the utmost privacy protection for you.",
+      "We employ strict access controls, anonymization, and regular audits.",
       "Tasketeer operates securely within Slack's platform.",
-      "Rest assured, your confidential documents are safe and protected.",
-      "Search your private files with peace of mind.",
+      "Documents secured with encryption, access restrictions, monitoring.",
+      "Access files securely. Our advanced measures prevent breaches.",
     ],
     question:
       "Tasketeer, can you access my sensitive documents and private information?",
