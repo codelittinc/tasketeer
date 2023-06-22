@@ -19,8 +19,18 @@ import TasketeerButton, { buttonCategories } from "../TasketeerButton";
 
 const FileUpload = ({ onUpload, isOpen, onClose }) => {
   const [uploading, setUploading] = React.useState(false);
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+  const [acceptedFiles, setAcceptedFiles] = React.useState([]);
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop: (droppedFiles) => {
+      setAcceptedFiles((prevFiles) => [...prevFiles, ...droppedFiles]);
+    },
+  });
   const dispatch = useDispatch();
+
+  const handleClose = () => {
+    onClose();
+    setAcceptedFiles([]);
+  };
 
   const uploadFiles = async () => {
     setUploading(true);
@@ -46,6 +56,8 @@ const FileUpload = ({ onUpload, isOpen, onClose }) => {
       onUpload();
       onClose();
     }
+
+    setAcceptedFiles([]);
     setUploading(false);
   };
 
@@ -104,12 +116,12 @@ const FileUpload = ({ onUpload, isOpen, onClose }) => {
         </Box>
       }
       open={isOpen}
-      onClose={onClose}
+      onClose={handleClose}
       actions={[
         <TasketeerButton
           category={buttonCategories.tertiary}
           text="Cancel"
-          onClick={onClose}
+          onClick={handleClose}
         />,
         <TasketeerButton
           category={buttonCategories.primary}
