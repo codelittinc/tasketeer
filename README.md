@@ -78,7 +78,7 @@ npm run docker:start:all
 
 ## Development
 
-We are using the gem `annotate` to better visualize the models and their relationships.
+We use the gem `annotate` to better visualize the models and their relationships.
 
 After creating a database migration, run the following command to annotate the models:
 
