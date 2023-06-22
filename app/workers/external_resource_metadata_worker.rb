@@ -71,6 +71,7 @@ class ExternalResourceMetadataWorker
   def set_processing(external_resources, processing)
     external_resources.each do |metadata|
       ExternalResourceMetadata.update(metadata.id, processing:)
+      WebPage.update(metadata.web_page_id, is_processing: processing)
     end
   end
 

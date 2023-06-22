@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import IconButton from '@mui/material/IconButton';
 import TrashIcon from '../../../../../../assets/icons/trash-icon.svg';
-import styles from './CrawlerTable.module.css';
+import CrawlerStatus from '../CrawlerStatus';
 
 const headerColumnStyles = {
   fontFamily: 'Montserrat',
@@ -60,10 +60,7 @@ const CrawlerTable = ({ urls, onDelete }) => (
             <p title={item.url || item.name}>{getTitle(item)}</p>
           </TableCell>
           <TableCell sx={rowColumnStyles(index === urls.length - 1)}>
-            <p className={item.indexed ? styles.indexed : styles.inProgress}>
-              <div className={item.indexed ? styles.dotIndexed : styles.dotInProgress} />
-              {item.indexed ? 'Indexed' : 'In Progress'}
-            </p>
+            <CrawlerStatus url={item} />
           </TableCell>
           <TableCell sx={{
             ...rowColumnStyles(index === urls.length - 1),

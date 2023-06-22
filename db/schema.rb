@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_001452) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_22_132206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -117,7 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_001452) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -152,9 +152,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_001452) do
   create_table "user_roles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "organization_id"
-    t.bigint "user_id"
-    t.bigint "role_id"
+    t.bigint "organization_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "role_id", null: false
     t.index ["organization_id", "user_id", "role_id"], name: "idx_user_role_on_organization", unique: true
     t.index ["organization_id"], name: "index_user_roles_on_organization_id"
     t.index ["role_id"], name: "index_user_roles_on_role_id"
@@ -186,6 +186,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_001452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "domain_id"
+    t.boolean "is_processing", default: false, null: false
     t.index ["domain_id"], name: "index_web_pages_on_domain_id"
   end
 

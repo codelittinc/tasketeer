@@ -7,6 +7,7 @@
 #  id              :bigint           not null, primary key
 #  content         :text
 #  indexed         :boolean
+#  is_processing   :boolean          default(FALSE), not null
 #  url             :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
