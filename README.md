@@ -2,7 +2,7 @@
 
 <img align="right" height="250" src="docs/mascot.png">
 
-[Tasketeer](https://tasketeer.ai/) is a bot that runs on Slack and helps you quickly find information in your private documents. You can simply ask the bot a question, and it will search through the indexed files for relevant information. 
+[Tasketeer](https://tasketeer.ai/) is a bot that runs on Slack and helps you quickly find information in your private documents. You can ask the bot a question, and it will search through the indexed files for relevant information. 
 
 Tasketeer also provides a web application that allows you to add any documents you want to search through. The web application also allows you to view the documents that have been indexed and the questions that have been asked to the bot. 
 
