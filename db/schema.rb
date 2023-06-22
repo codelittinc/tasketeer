@@ -117,7 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_132206) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -152,9 +152,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_132206) do
   create_table "user_roles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "organization_id", null: false
-    t.bigint "user_id", null: false
-    t.bigint "role_id", null: false
+    t.bigint "organization_id"
+    t.bigint "user_id"
+    t.bigint "role_id"
     t.index ["organization_id", "user_id", "role_id"], name: "idx_user_role_on_organization", unique: true
     t.index ["organization_id"], name: "index_user_roles_on_organization_id"
     t.index ["role_id"], name: "index_user_roles_on_role_id"

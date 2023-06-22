@@ -7,9 +7,9 @@
 #  id              :bigint           not null, primary key
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint           not null
-#  role_id         :bigint           not null
-#  user_id         :bigint           not null
+#  organization_id :bigint
+#  role_id         :bigint
+#  user_id         :bigint
 #
 # Foreign Keys
 #

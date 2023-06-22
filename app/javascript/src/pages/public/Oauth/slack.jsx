@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { useDispatch } from 'react-redux';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import CircularProgress from '@mui/material/CircularProgress';
-import { login } from '../../../features/authSlice';
-import UsersService from '../../../services/users.service';
-import Alerts from '../../../constants/alerts';
-import { showSnackbar } from '../../../features/feedbackSlice';
-import routes from '../../../constants/routes';
+import * as React from "react";
+import { useDispatch } from "react-redux";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import CircularProgress from "@mui/material/CircularProgress";
+import { login } from "../../../features/authSlice";
+import UsersService from "../../../services/users.service";
+import Alerts from "../../../constants/alerts";
+import { showSnackbar } from "../../../features/feedbackSlice";
+import routes from "../../../constants/routes";
 
 const OauthSlackPage = () => {
   const [loading, setLoading] = React.useState(true);
@@ -18,22 +18,33 @@ const OauthSlackPage = () => {
   const { pathname } = useLocation();
 
   const [params] = useSearchParams();
-  const slackCode = params.get('code');
+  const slackCode = params.get("code");
+  const error = params.get("error");
 
   React.useEffect(() => {
+    if (error === "access_denied") {
+      dispatch(
+        showSnackbar({
+          message: "The user has denied access",
+          type: Alerts.error,
+        })
+      );
+      navigate(routes.login);
+    }
+
     if (!loading || !slackCode) return;
 
     const oauth = async () => {
-      const {
-        user: userData,
-        errorMessage,
-      } = await UsersService.slackOauthAuthorize(slackCode, pathname);
+      const { user: userData, errorMessage } =
+        await UsersService.slackOauthAuthorize(slackCode, pathname);
 
       if (errorMessage) {
-        dispatch(showSnackbar({
-          message: errorMessage,
-          type: Alerts.error,
-        }));
+        dispatch(
+          showSnackbar({
+            message: errorMessage,
+            type: Alerts.error,
+          })
+        );
         navigate(routes.login);
       } else {
         dispatch(login(userData));
@@ -51,9 +62,9 @@ const OauthSlackPage = () => {
       <Box
         sx={{
           marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
         <CircularProgress color="inherit" />
