@@ -1,66 +1,68 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate, Link as RouterLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import { REACT_APP_ENABLE_SIGN_IN } from 'env';
-import routes from '../../constants/routes';
-import SlackLoginButton from '../SlackButtons';
-import TasketeerLogo from '../../../../assets/images/tasketeer-logo.svg';
-import LoginIcon from '../../../../assets/icons/login-black.svg';
-import CloseIcon from '../../../../assets/icons/close-icon.svg';
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import { REACT_APP_ENABLE_SIGN_IN } from "env";
+import routes from "../../constants/routes";
+import SlackLoginButton from "../SlackButtons";
+import TasketeerLogo from "../../../../assets/images/tasketeer-logo.svg";
+import LoginIcon from "../../../../assets/icons/login-black.svg";
+import CloseIcon from "../../../../assets/icons/close-icon.svg";
 import TasketeerButton, {
   buttonCategories,
   buttonSize,
-} from '../TasketeerButton';
+} from "../TasketeerButton";
 import {
   navigationButton,
   sidebarLink,
   MenuAccordionLink,
-} from './NavbarMUIStyles';
-import useWindowSize from '../../hooks/useWindowSize';
-import UserMenu from './userMenu';
-import { usePageTitle } from '../../hooks/usePageTitle';
-import COLORS from '../../utils/colors';
-import TasketeerAccordion from '../TasketeerAccordion';
-import NotionIcon from '../../../../assets/icons/notion-menu-icon.svg';
-import GPTIcon from '../../../../assets/icons/chatgpt-menu-icon.svg';
-import LinksIcon from '../../../../assets/icons/links-menu-icon.svg';
-import UploadIcon from '../../../../assets/icons/upload-menu-icon.svg';
-import { logout as logoutSlice } from '../../features/authSlice';
-import UsersService from '../../services/users.service';
-import AddToSlackButton from '../SlackButtons/AddToSlackButton';
-import styles from './Navbar.module.css';
+} from "./NavbarMUIStyles";
+import useWindowSize from "../../hooks/useWindowSize";
+import UserMenu from "./userMenu";
+import { usePageTitle } from "../../hooks/usePageTitle";
+import COLORS from "../../utils/colors";
+import TasketeerAccordion from "../TasketeerAccordion";
+import NotionIcon from "../../../../assets/icons/notion-menu-icon.svg";
+import GPTIcon from "../../../../assets/icons/chatgpt-menu-icon.svg";
+import LinksIcon from "../../../../assets/icons/links-menu-icon.svg";
+import UploadIcon from "../../../../assets/icons/upload-menu-icon.svg";
+import AddToSlackButton from "../SlackButtons/AddToSlackButton";
+import useLogout from "../../hooks/useLogout";
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
+  const logout = useLogout();
   const { user } = useSelector((state) => state.auth);
   const windowSize = useWindowSize();
   const navigate = useNavigate();
 
-  const signedIn = user && user.id;
   const appNotInstalledToSlack =
-    user?.selected_organization?.notifications_id === '0';
+    user?.selected_organization?.notifications_id === "0";
 
   const drawerWidth = 453;
 
   const [sideBar, setSideBar] = React.useState(false);
 
-  const logout = async () => {
-    await UsersService.signOut();
-    dispatch(logoutSlice());
+  const [signedIn, setSignedIn] = useState(null);
+
+  useEffect(() => {
+    user && setSignedIn(user.id);
+  }, [user]);
+
+  const handleLogout = () => {
+    logout();
+    setSignedIn(null);
     setSideBar(false);
-    navigate(routes.root);
   };
 
   const container =
@@ -77,12 +79,12 @@ const Navbar = () => {
 
   const renderMenuTitle = (name, route) => {
     return (
-      <ListItem sx={{ padding: '0' }}>
+      <ListItem sx={{ padding: "0" }}>
         <ListItemButton
           onClick={() => {
             route && handleNavigate(route);
           }}
-          sx={{ padding: '0', fontFamily: 'Clash Display' }}
+          sx={{ padding: "0", fontFamily: "Clash Display" }}
         >
           {name}
         </ListItemButton>
@@ -122,10 +124,10 @@ const Navbar = () => {
         <IconButton
           sx={{
             backgroundColor: COLORS.neutral900,
-            borderRadius: '8px',
-            height: '56px',
+            borderRadius: "8px",
+            height: "56px",
             marginRight: 3,
-            width: '56px',
+            width: "56px",
           }}
         >
           <img src={CloseIcon} />
@@ -135,7 +137,7 @@ const Navbar = () => {
 
       {signedIn ? (
         <List
-          sx={{ marginTop: signedIn ? '24px' : 'auto' }}
+          sx={{ marginTop: signedIn ? "24px" : "auto" }}
           onClick={(event) => {
             event.stopPropagation();
           }}
@@ -146,23 +148,23 @@ const Navbar = () => {
                 isMenuAccordion
                 items={[
                   {
-                    id: 'navbar-item-1',
-                    title: renderMenuTitle('Training Setup'),
+                    id: "navbar-item-1",
+                    title: renderMenuTitle("Training Setup"),
                     content: (
                       <>
-                        {renderMenuContent('GPT Setup', GPTIcon, routes.setup)}
+                        {renderMenuContent("GPT Setup", GPTIcon, routes.setup)}
                         {renderMenuContent(
-                          'Upload Files',
+                          "Upload Files",
                           UploadIcon,
                           routes.organization
                         )}
                         {renderMenuContent(
-                          'Set Notion API',
+                          "Set Notion API",
                           NotionIcon,
                           routes.integration
                         )}
                         {renderMenuContent(
-                          'Domain Links',
+                          "Domain Links",
                           LinksIcon,
                           routes.webCrawler
                         )}
@@ -170,37 +172,37 @@ const Navbar = () => {
                     ),
                   },
                   {
-                    id: 'navbar-item-2',
+                    id: "navbar-item-2",
                     title: renderMenuTitle(
-                      'Team Permissions',
+                      "Team Permissions",
                       routes.permissions
                     ),
                   },
                   {
-                    id: 'navbar-item-3',
+                    id: "navbar-item-3",
                     title: renderMenuTitle(
-                      'Conversation History',
+                      "Conversation History",
                       routes.history
                     ),
                   },
                   {
-                    id: 'navbar-item-4',
-                    title: renderMenuTitle('Support', routes.support),
+                    id: "navbar-item-4",
+                    title: renderMenuTitle("Support", routes.support),
                   },
                   {
-                    id: 'navbar-item-5',
-                    title: renderMenuTitle('FAQ', routes.faq),
+                    id: "navbar-item-5",
+                    title: renderMenuTitle("FAQ", routes.faq),
                   },
                 ]}
               />
 
               <ListItem
                 disablePadding
-                sx={{ marginBottom: '56px', marginTop: '4px' }}
+                sx={{ marginBottom: "56px", marginTop: "4px" }}
               >
                 <ListItemButton
                   onClick={() => navigate(routes.chat)}
-                  sx={{ paddingLeft: '0' }}
+                  sx={{ paddingLeft: "0" }}
                 >
                   <TasketeerButton
                     category={buttonCategories.primary}
@@ -211,10 +213,10 @@ const Navbar = () => {
                 </ListItemButton>
               </ListItem>
 
-              <Box display={'flex'} sx={{ gap: '30px' }}>
+              <Box display={"flex"} sx={{ gap: "30px" }}>
                 <TasketeerButton
                   category={buttonCategories.tertiary}
-                  onClick={logout}
+                  onClick={handleLogout}
                   text="Log out"
                 />
                 <TasketeerButton
@@ -227,10 +229,10 @@ const Navbar = () => {
           )}
         </List>
       ) : (
-        <List sx={{ marginTop: 'auto' }}>
-          {renderMenu('FAQ', routes.faq)}
-          {renderMenu('Support', routes.support)}
-          {renderMenu('Privacy', routes.privacy)}
+        <List sx={{ marginTop: "auto" }}>
+          {renderMenu("FAQ", routes.faq)}
+          {renderMenu("Support", routes.support)}
+          {renderMenu("Privacy", routes.privacy)}
 
           <ListItem disablePadding>
             <TasketeerButton
@@ -250,16 +252,16 @@ const Navbar = () => {
       <AppBar
         position="sticky"
         sx={{
-          backgroundImage: 'none',
-          marginTop: windowSize.width < 900 ? '16px' : '32px',
+          backgroundImage: "none",
+          marginTop: windowSize.width < 900 ? "16px" : "32px",
         }}
       >
         <Toolbar
           disableGutters
           sx={{
-            height: '72px',
-            justifyContent: 'space-between',
-            padding: `0 ${windowSize.width < 900 ? '20px' : '32px'}`,
+            height: "72px",
+            justifyContent: "space-between",
+            padding: `0 ${windowSize.width < 900 ? "20px" : "32px"}`,
           }}
         >
           <div className={styles.navLogoContainer}>
@@ -270,15 +272,15 @@ const Navbar = () => {
               onClick={handleDrawerToggle}
               sx={{
                 backgroundColor: COLORS.neutral900,
-                borderRadius: '8px',
+                borderRadius: "8px",
                 display: signedIn
-                  ? 'flex'
+                  ? "flex"
                   : windowSize.width < 900
-                  ? 'flex'
-                  : 'none',
-                height: '56px',
-                margin: '0 35px 0 0',
-                width: '56px',
+                  ? "flex"
+                  : "none",
+                height: "56px",
+                margin: "0 35px 0 0",
+                width: "56px",
               }}
             >
               <MenuIcon />
@@ -294,7 +296,7 @@ const Navbar = () => {
                   : routes.chat
               }
               sx={{
-                height: '27px',
+                height: "27px",
               }}
             >
               <img src={TasketeerLogo} />
@@ -304,12 +306,12 @@ const Navbar = () => {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: 'none', sm: 'none', md: 'flex' },
-              justifyContent: 'center',
+              display: { xs: "none", sm: "none", md: "flex" },
+              justifyContent: "center",
             }}
           >
             {signedIn ? (
-              <h1 style={{ marginRight: '196px' }}>{usePageTitle()}</h1>
+              <h1 style={{ marginRight: "196px" }}>{usePageTitle()}</h1>
             ) : (
               <>
                 <Button
@@ -343,9 +345,9 @@ const Navbar = () => {
                 {appNotInstalledToSlack && windowSize.width >= 900 && (
                   <AddToSlackButton isSmall />
                 )}
-                <UserMenu />
+                <UserMenu logout={handleLogout} />
               </>
-            ) : REACT_APP_ENABLE_SIGN_IN === 'true' ? (
+            ) : REACT_APP_ENABLE_SIGN_IN === "true" ? (
               <div className={styles.buttonsContainer}>
                 <TasketeerButton
                   category={buttonCategories.primary}
@@ -382,14 +384,14 @@ const Navbar = () => {
           }}
           sx={{
             display: {
-              xs: 'block',
+              xs: "block",
             },
-            '& .MuiDrawer-paper': {
-              backgroundImage: 'none',
-              boxSizing: 'border-box',
+            "& .MuiDrawer-paper": {
+              backgroundImage: "none",
+              boxSizing: "border-box",
               width: {
-                xs: '100%',
-                sm: '100%',
+                xs: "100%",
+                sm: "100%",
                 md: drawerWidth,
               },
             },

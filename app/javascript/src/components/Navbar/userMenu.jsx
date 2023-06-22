@@ -1,32 +1,19 @@
-import * as React from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import UsersService from "../../services/users.service";
-import { logout as logoutSlice } from "../../features/authSlice";
-import routes from "../../constants/routes";
 
-const UserMenu = () => {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+const UserMenu = ({ logout }) => {
+  const [anchorElUser, setAnchorElUser] = useState(null);
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
-
-  const logout = async () => {
-    await UsersService.signOut();
-    dispatch(logoutSlice());
-    navigate(routes.root);
   };
 
   return (
