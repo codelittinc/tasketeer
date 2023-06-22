@@ -124,7 +124,7 @@ const LoginPage = () => {
               variant="body2"
               fontSize={16}
             >
-              {"Don't have an account?"}
+              Don't have an account?&nbsp;
               <span className={styles.footerInnerText}>Sign up</span>
             </Typography>
           </Grid>
