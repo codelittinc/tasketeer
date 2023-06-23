@@ -52,7 +52,7 @@ const TasketeerAccordion = ({ items, isMenuAccordion }) => {
             sx={
               isMenuAccordion
                 ? MenuAccordionSummaryStyles
-                : AccordionSummaryStyles
+                : AccordionSummaryStyles(expanded, item)
             }
           >
             {item.title}

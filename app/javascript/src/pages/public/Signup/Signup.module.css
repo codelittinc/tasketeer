@@ -67,23 +67,6 @@
   background-color: #121212;
 }
 
-.signUpButton {
-  background-color: var(--primary200);
-  border-radius: 12px;
-  border: 0;
-  color: var(--neutral100);
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  height: 48px;
-  margin: 4px 0 48px;
-  width: 100%;
-}
-
-.signUpButton:disabled {
-  background-color: var(--neutral600);
-}
-
 .footerText {
   text-decoration: none;
 }

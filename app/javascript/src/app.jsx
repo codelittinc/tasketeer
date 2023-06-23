@@ -41,6 +41,12 @@ import SetupPage from "./pages/private/Setup";
 export default function App({ cable }) {
   const [pageLoaded, setPageLoaded] = React.useState(false);
   const { pathname } = useLocation();
+  const footerEnabledPages = [
+    routes.root,
+    routes.support,
+    routes.privacy,
+    routes.faq,
+  ];
 
   const dispatch = useDispatch();
 
@@ -127,7 +133,7 @@ export default function App({ cable }) {
         <CircularProgress color="inherit" />
       </Backdrop>
 
-      {pathname !== routes.chat && (
+      {footerEnabledPages.includes(pathname) && (
         <Box component="footer" className={styles.footer}>
           <p className={styles.footerText}>
             Made with love, Mongo, Box and a mouse - by &nbsp;

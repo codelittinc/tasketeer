@@ -33,6 +33,10 @@
   margin: 0;
 }
 
+.menuIcon {
+  padding-top: 4px;
+}
+
 @media screen and (max-width: 900px) {
   .signupButton {
     display: none;

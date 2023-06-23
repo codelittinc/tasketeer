@@ -24,14 +24,16 @@ import TasketeerButton, {
 } from "../TasketeerButton";
 import {
   navigationButton,
-  sidebarLink,
-  MenuAccordionLink,
+  sidebarButton,
+  MenuTitleButton,
+  MenuContentButton,
 } from "./NavbarMUIStyles";
 import useWindowSize from "../../hooks/useWindowSize";
 import UserMenu from "./userMenu";
 import { usePageTitle } from "../../hooks/usePageTitle";
 import COLORS from "../../utils/colors";
 import TasketeerAccordion from "../TasketeerAccordion";
+import { ReactSVG } from "react-svg";
 import NotionIcon from "../../../../assets/icons/notion-menu-icon.svg";
 import GPTIcon from "../../../../assets/icons/chatgpt-menu-icon.svg";
 import LinksIcon from "../../../../assets/icons/links-menu-icon.svg";
@@ -81,10 +83,11 @@ const Navbar = () => {
     return (
       <ListItem sx={{ padding: "0" }}>
         <ListItemButton
+          disableRipple
           onClick={() => {
             route && handleNavigate(route);
           }}
-          sx={{ padding: "0", fontFamily: "Clash Display" }}
+          sx={MenuTitleButton}
         >
           {name}
         </ListItemButton>
@@ -96,12 +99,13 @@ const Navbar = () => {
     return (
       <ListItem disablePadding>
         <ListItemButton
+          disableRipple
           onClick={() => {
             route && handleNavigate(route);
           }}
-          sx={MenuAccordionLink}
+          sx={MenuContentButton}
         >
-          <img src={icon} />
+          <ReactSVG src={icon} className={styles.menuIcon} />
           {name}
         </ListItemButton>
       </ListItem>
@@ -110,8 +114,8 @@ const Navbar = () => {
 
   const renderMenu = (name, route) => {
     return (
-      <ListItem disablePadding sx={sidebarLink}>
-        <ListItemButton onClick={() => navigate(route)}>
+      <ListItem disablePadding sx={sidebarButton}>
+        <ListItemButton disableRipple onClick={() => navigate(route)}>
           <p className={styles.mobileLinkText}>{name}</p>
         </ListItemButton>
       </ListItem>
@@ -202,7 +206,13 @@ const Navbar = () => {
               >
                 <ListItemButton
                   onClick={() => navigate(routes.chat)}
-                  sx={{ paddingLeft: "0" }}
+                  disableRipple
+                  sx={{
+                    paddingLeft: "0",
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                    },
+                  }}
                 >
                   <TasketeerButton
                     category={buttonCategories.primary}
@@ -253,6 +263,7 @@ const Navbar = () => {
         position="sticky"
         sx={{
           backgroundImage: "none",
+          boxShadow: "none",
           marginTop: windowSize.width < 900 ? "16px" : "32px",
         }}
       >
@@ -316,6 +327,7 @@ const Navbar = () => {
               <>
                 <Button
                   key="faq"
+                  disableRipple
                   onClick={() => navigate(routes.faq)}
                   sx={navigationButton(routes.faq)}
                 >
@@ -323,6 +335,7 @@ const Navbar = () => {
                 </Button>
                 <Button
                   key="support"
+                  disableRipple
                   onClick={() => navigate(routes.support)}
                   sx={navigationButton(routes.support)}
                 >
@@ -330,6 +343,7 @@ const Navbar = () => {
                 </Button>
                 <Button
                   key="privacy"
+                  disableRipple
                   onClick={() => navigate(routes.privacy)}
                   sx={navigationButton(routes.privacy)}
                 >

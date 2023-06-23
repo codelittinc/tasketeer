@@ -24,7 +24,7 @@ const UserMenu = ({ logout }) => {
         </IconButton>
       </Tooltip>
       <Menu
-        sx={{ mt: "45px" }}
+        sx={{ mt: "40px" }}
         id="menu-appbar"
         anchorEl={anchorElUser}
         anchorOrigin={{

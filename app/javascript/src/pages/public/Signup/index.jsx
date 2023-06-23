@@ -15,6 +15,10 @@ import routes from "../../../constants/routes";
 import InputField from "../../../components/InputField/InputField";
 import SlackLoginButton from "../../../components/SlackButtons";
 import { VALID_EMAIL, VALID_PASSWORD } from "../../../constants/regex";
+import TasketeerButton, {
+  buttonCategories,
+  buttonSize,
+} from "../../../components/TasketeerButton";
 import styles from "./Signup.module.css";
 
 const SignupPage = () => {
@@ -167,17 +171,19 @@ const SignupPage = () => {
             onChange={handleFormChanged}
           />
 
-          <button
-            className={styles.signUpButton}
+          <TasketeerButton
+            category={buttonCategories.primary}
+            size={buttonSize.fullWidth}
             disabled={loading}
             type="submit"
-          >
-            {loading ? (
-              <CircularProgress color="primary" size={24} />
-            ) : (
-              "Sign up"
-            )}
-          </button>
+            text={
+              loading ? (
+                <CircularProgress color="primary" size={24} />
+              ) : (
+                "Sign up"
+              )
+            }
+          />
         </Box>
 
         <Grid container>
