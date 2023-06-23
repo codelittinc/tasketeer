@@ -52,6 +52,11 @@
   background-color: #121212;
 }
 
+.loginSection {
+  width: 40%;
+  float: right;
+}
+
 .loginIcon {
   margin-left: 13.25px;
 }
@@ -65,4 +70,13 @@
 
 .footerInnerText {
   font-weight: 600;
+}
+
+.forgotPassword {
+  float: left;
+  width: 50%;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 32px;
 }

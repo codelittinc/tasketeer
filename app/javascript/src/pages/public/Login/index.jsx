@@ -1,24 +1,24 @@
-import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import CircularProgress from "@mui/material/CircularProgress";
-import { login, setLoading } from "../../../features/authSlice";
-import UsersService from "../../../services/users.service";
-import Alerts from "../../../constants/alerts";
-import { showSnackbar } from "../../../features/feedbackSlice";
-import routes from "../../../constants/routes";
-import SlackLoginButton from "../../../components/SlackButtons";
-import InputField from "../../../components/InputField/InputField";
-import LoginIcon from "../../../../../assets/icons/login.svg";
+import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import CircularProgress from '@mui/material/CircularProgress';
+import { login, setLoading } from '../../../features/authSlice';
+import UsersService from '../../../services/users.service';
+import Alerts from '../../../constants/alerts';
+import { showSnackbar } from '../../../features/feedbackSlice';
+import routes from '../../../constants/routes';
+import SlackLoginButton from '../../../components/SlackButtons';
+import InputField from '../../../components/InputField/InputField';
+import LoginIcon from '../../../../../assets/icons/login.svg';
 import TasketeerButton, {
   buttonCategories,
   buttonSize,
-} from "../../../components/TasketeerButton";
-import styles from "./Login.module.css";
+} from '../../../components/TasketeerButton';
+import styles from './Login.module.css';
 
 const LoginPage = () => {
   const { loading } = useSelector((state) => state.auth);
@@ -33,7 +33,7 @@ const LoginPage = () => {
 
     const { user, errorMessage } = await UsersService.signIn(
       data.email,
-      data.password
+      data.password,
     );
 
     if (errorMessage) {
@@ -41,14 +41,14 @@ const LoginPage = () => {
         showSnackbar({
           message: errorMessage,
           type: Alerts.error,
-        })
+        }),
       );
     } else {
       dispatch(
         showSnackbar({
-          message: "Signed in successfully",
+          message: 'Signed in successfully',
           type: Alerts.success,
-        })
+        }),
       );
       dispatch(login(user));
       navigate(routes.welcome);
@@ -62,9 +62,9 @@ const LoginPage = () => {
       <Box
         sx={{
           marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
         <div className={styles.headingContainer}>
@@ -105,23 +105,32 @@ const LoginPage = () => {
             id="password"
             autoComplete="current-password"
           />
-
-          <TasketeerButton
-            category={buttonCategories.primary}
-            size={buttonSize.fullWidth}
-            disabled={loading}
-            type="submit"
-            text={
-              loading ? (
-                <CircularProgress color="primary" size={24} />
-              ) : (
-                <>
-                  Log In
-                  <img src={LoginIcon} className={styles.loginIcon} />
-                </>
-              )
-            }
-          />
+          <section>
+            <p
+              onClick={() => navigate(routes.recoverPassword)}
+              className={styles.forgotPassword}
+            >
+              Forgot your password?
+            </p>
+            <div className={styles.loginSection}>
+              <TasketeerButton
+                category={buttonCategories.primary}
+                size={buttonSize.fullWidth}
+                disabled={loading}
+                type="submit"
+                text={
+                  loading ? (
+                    <CircularProgress color="primary" size={24} />
+                  ) : (
+                    <>
+                      Log In
+                      <img src={LoginIcon} className={styles.loginIcon} />
+                    </>
+                  )
+                }
+              />
+            </div>
+          </section>
         </Box>
 
         <Grid container>

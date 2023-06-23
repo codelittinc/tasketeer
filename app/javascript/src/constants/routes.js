@@ -6,6 +6,7 @@ const routes = {
   integration: '/integration',
   login: '/login',
   loginSlack: '/oauth/slack',
+  recoverPassword: '/recover-password',
   organization: '/organization',
   permissions: '/permissions',
   privacy: '/privacy',
@@ -17,6 +18,7 @@ const routes = {
   welcome: '/welcome',
   adminHome: '/adminHome',
   setup: '/setup',
+  updatePassword: '/reset-password',
 };
 
 export default routes;

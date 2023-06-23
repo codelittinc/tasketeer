@@ -1,15 +1,17 @@
-import apiClient from "../clients/apiClient";
-import routes from "../constants/routes";
-import ApiService from "./api.service";
-import SessionService from "./session.service";
+import apiClient from '../clients/apiClient';
+import routes from '../constants/routes';
+import ApiService from './api.service';
+import SessionService from './session.service';
 
 const Actions = {
-  currentUser: "api/me",
-  logout: "logout",
-  oauthSlackSignIn: "api/oauth/slack",
-  oauthSlackAuthorize: "api/authorize_oauth/slack",
-  signIn: "login",
-  signUp: "signup",
+  currentUser: 'api/me',
+  logout: 'logout',
+  oauthSlackSignIn: 'api/oauth/slack',
+  oauthSlackAuthorize: 'api/authorize_oauth/slack',
+  signIn: 'login',
+  signUp: 'signup',
+  resetPassword: 'api/users/reset-password',
+  updatePassword: 'api/users/update-password',
 };
 
 class UsersService {
@@ -35,7 +37,7 @@ class UsersService {
 
       return {
         user: null,
-        errorMessage: "Unexpected error",
+        errorMessage: 'Unexpected error',
       };
     }
   }
@@ -52,7 +54,7 @@ class UsersService {
       });
       const { user } = response.data;
       SessionService.setCachedAccessToken(
-        response.headers.get("Authorization")
+        response.headers.get('Authorization'),
       );
       SessionService.setCachedUser(user);
 
@@ -74,7 +76,7 @@ class UsersService {
 
       const { user } = response.data;
       SessionService.setCachedAccessToken(
-        response.headers.get("Authorization")
+        response.headers.get('Authorization'),
       );
       SessionService.setCachedUser(user);
       return {
@@ -93,14 +95,14 @@ class UsersService {
         if (error.response.status >= 400 && error.response.status < 500) {
           return {
             user: null,
-            errorMessage: "Invalid credentials",
+            errorMessage: 'Invalid credentials',
           };
         }
       }
 
       return {
         user: null,
-        errorMessage: "Unexpected error",
+        errorMessage: 'Unexpected error',
       };
     }
   }
@@ -133,7 +135,7 @@ class UsersService {
       }
 
       SessionService.setCachedAccessToken(
-        response.headers.get("Authorization")
+        response.headers.get('Authorization'),
       );
       SessionService.setCachedUser(user);
       return {
@@ -149,7 +151,7 @@ class UsersService {
       }
       return {
         user: null,
-        errorMessage: "Unexpected error",
+        errorMessage: 'Unexpected error',
       };
     }
   }
@@ -162,6 +164,64 @@ class UsersService {
     }
     SessionService.removeCachedAccessToken();
     SessionService.removeCachedUser();
+  }
+
+  static async resetPassword(email) {
+    try {
+      const response = await apiClient.post(Actions.resetPassword, {
+        email,
+      });
+
+      const { ok } = response.data;
+      return {
+        ok,
+        errorMessage: null,
+      };
+    } catch (error) {
+      if (error.isAxiosError) {
+        if (error.response.data?.errors) {
+          return {
+            user: null,
+            errorMessage: ApiService.formatErrors(error.response.data?.errors),
+          };
+        }
+      }
+
+      return {
+        user: null,
+        errorMessage: 'Unexpected error',
+      };
+    }
+  }
+
+  static async updatePassword(email, token, password) {
+    try {
+      const response = await apiClient.post(Actions.updatePassword, {
+        email,
+        token,
+        password,
+      });
+
+      const { message } = response.data;
+      return {
+        message,
+        errorMessage: null,
+      };
+    } catch (error) {
+      if (error.isAxiosError) {
+        if (error.response.data?.errors) {
+          return {
+            user: null,
+            errorMessage: ApiService.formatErrors(error.response.data?.errors),
+          };
+        }
+      }
+
+      return {
+        user: null,
+        errorMessage: 'Unexpected error',
+      };
+    }
   }
 }
 
