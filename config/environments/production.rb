@@ -94,4 +94,12 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.active_record.verbose_query_logs = true
+
+  config.action_mailer.default_url_options = { host: ENV.fetch('DOMAIN', nil) }
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV.fetch('MAILGUN_API_KEY', nil),
+    domain: ENV.fetch('MAILGUN_DOMAIN', nil)
+  }
 end

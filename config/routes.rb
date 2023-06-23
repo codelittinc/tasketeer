@@ -63,6 +63,8 @@ Rails.application.routes.draw do
     get 'notion/last-execution/:organization_id', to: 'notion_integration#last_execution'
     post 'notion/run/:organization_id', to: 'notion_integration#run'
     get 'notion/all_pages/:organization_id', to: 'notion_integration#all_pages'
+    post 'users/reset-password', to: 'users#reset_password'
+    post 'users/update-password', to: 'users#update_password'
 
     namespace :admin do
       get 'history', to: 'search_history#index'

@@ -2,7 +2,7 @@
 
 module Api
   class UsersController < ApiController
-    skip_before_action :authenticate_user!, only: %i[slack authorize_oauth_slack]
+    skip_before_action :authenticate_user!, only: %i[slack authorize_oauth_slack reset_password update_password]
     skip_before_action :verify_organization_approval
 
     def index
@@ -32,6 +32,28 @@ module Api
         redirect_uri: "#{ENV.fetch('REACT_APP_API_URL', nil)}oauth/slack"
       )
       load_user(resp.access_token)
+    end
+
+    def reset_password
+      user = User.find_by(email: params[:email])
+      if user.present?
+        token = Digest::SHA1.hexdigest([Time.zone.now, rand].join)
+        user.update(reset_password_token: token, reset_password_sent_at: Time.zone.now)
+        UsersMailer.reset_password_instructions(user, token).deliver_now
+        render json: { message: 'Email sent' }, status: :ok
+      else
+        render json: { errors: ["Couldn't find your Tasketeer account"] }, status: :bad_request
+      end
+    end
+
+    def update_password
+      user = User.find_by(reset_password_token: params[:token], email: params[:email])
+      if user.present?
+        user.update(password: params[:password], reset_password_token: nil, reset_password_sent_at: nil)
+        render json: { message: 'Password updated' }, status: :ok
+      else
+        render json: { errors: ['Invalid token'] }, status: :ok
+      end
     end
 
     private
