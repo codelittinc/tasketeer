@@ -14,6 +14,10 @@ import routes from "../../../constants/routes";
 import SlackLoginButton from "../../../components/SlackButtons";
 import InputField from "../../../components/InputField/InputField";
 import LoginIcon from "../../../../../assets/icons/login.svg";
+import TasketeerButton, {
+  buttonCategories,
+  buttonSize,
+} from "../../../components/TasketeerButton";
 import styles from "./Login.module.css";
 
 const LoginPage = () => {
@@ -101,18 +105,23 @@ const LoginPage = () => {
             id="password"
             autoComplete="current-password"
           />
-          <button
-            className={styles.signUpButton}
+
+          <TasketeerButton
+            category={buttonCategories.primary}
+            size={buttonSize.fullWidth}
             disabled={loading}
             type="submit"
-          >
-            {loading ? (
-              <CircularProgress color="primary" size={24} />
-            ) : (
-              "Log In"
-            )}
-            <img src={LoginIcon} className={styles.loginIcon} />
-          </button>
+            text={
+              loading ? (
+                <CircularProgress color="primary" size={24} />
+              ) : (
+                <>
+                  Log In
+                  <img src={LoginIcon} className={styles.loginIcon} />
+                </>
+              )
+            }
+          />
         </Box>
 
         <Grid container>

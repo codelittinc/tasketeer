@@ -19,15 +19,18 @@ export const AccordionStyles = (expanded, item) => {
     "&:last-of-type": {
       borderBottomRightRadius: "16px",
       borderBottomLeftRadius: "16px",
+      marginBottom: "0",
     },
   };
 };
 
-export const AccordionSummaryStyles = {
-  fontSize: "18px",
-  fontWeight: "600",
-  lineHeight: "28px",
-  margin: "4px 8px",
+export const AccordionSummaryStyles = (expanded, item) => {
+  return {
+    fontSize: "18px",
+    fontWeight: "600",
+    lineHeight: "28px",
+    margin: `${expanded === item.id ? "3px" : "4px"} 8px`,
+  };
 };
 
 export const AccordionDetailsStyles = {

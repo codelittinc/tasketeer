@@ -13,6 +13,7 @@ export const buttonSize = {
   medium: "Medium",
   large: "Large",
   extraLarge: "ExtraLarge",
+  fullWidth: "FullWidth",
 };
 
 const TasketeerButton = ({

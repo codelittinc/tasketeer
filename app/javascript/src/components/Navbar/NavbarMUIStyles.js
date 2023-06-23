@@ -17,17 +17,33 @@ export const navigationButton = (name) => {
     padding: "16px 4px",
     textTransform: "none",
     width: "fit-content",
+    "&:hover": {
+      backgroundColor: "transparent",
+      color: COLORS.neutral500,
+    },
   };
 };
 
-export const sidebarLink = {
+export const sidebarButton = {
   marginBottom: "36px",
 };
 
-export const MenuAccordionLink = {
+export const MenuTitleButton = {
+  fontFamily: "Clash Display",
+  padding: "0",
+  "&:hover": {
+    backgroundColor: "transparent",
+    color: COLORS.neutral500,
+  },
+};
+
+export const MenuContentButton = {
   fontSize: "16px",
   fontWeight: 600,
   gap: "8px",
   lineHeight: "24px",
   margin: "0",
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
 };
