@@ -1,16 +1,21 @@
 import { createTheme } from "@mui/material/styles";
+import COLORS from "./utils/colors";
 
 const theme = createTheme({
   palette: {
     mode: "dark",
-    // primary: {
-    //   main: '#2C5DD9',
-    // },
-    // secondary: {
-    //   main: '#d40390',
-    // },
+    background: {
+      default: COLORS.neutral1000,
+    },
   },
   components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: COLORS.neutral1000,
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {

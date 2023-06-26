@@ -41,6 +41,7 @@ export const AccordionDetailsStyles = {
 };
 
 export const MenuAccordionStyles = {
+  backgroundColor: COLORS.neutral1000,
   backgroundImage: "none",
   borderBottom: `2px solid ${COLORS.neutral700}`,
   "&:before": {
