@@ -17,7 +17,6 @@ export const submitButtonStyles = (listening) => ({
 });
 
 export const formStyles = {
-  backgroundColor: "#121212",
   bottom: 0,
   marginTop: "auto",
   position: "sticky",

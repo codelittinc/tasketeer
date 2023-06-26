@@ -401,6 +401,7 @@ const Navbar = () => {
               xs: "block",
             },
             "& .MuiDrawer-paper": {
+              backgroundColor: COLORS.neutral1000,
               backgroundImage: "none",
               boxSizing: "border-box",
               width: {
