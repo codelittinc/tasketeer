@@ -8,13 +8,7 @@ class UsersMailer < ApplicationMailer
     @token = token
     @url = "#{ENV.fetch('REACT_APP_API_URL', nil)}reset-password?token=#{token}&email=#{user.email}"
 
-    mail(to: user.email, subject: 'Reset Password Instructions').tap do |message|
-      message.mailgun_options = {
-        'tag' => %w[abtest-option-a beta-user],
-        'tracking-opens' => true,
-        'tracking-clicks' => 'htmlonly'
-      }
-    end
+    mail(to: user.email, subject: 'Reset Password Instructions')
   end
 end
 
