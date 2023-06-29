@@ -11,10 +11,13 @@ module Clients
         @api_url = ENV.fetch('NLP_PROCESSOR_URL', nil)
       end
 
-      def generate_file_index(content, organization)
-        body = { 'organization' => organization, 'content' => content }.to_json
+      def generate_file_index(content, organization, google_token = nil, google_drive_folder = nil)
+        body = { 'organization' => organization, 'content' => content }
+        body['google_token'] = google_token if google_token
+        body['google_drive_id'] = google_drive_folder if google_drive_folder
+
         headers = { content_type: :json, accept: :json, Authorization: @api_key }
-        response = RestClient::Request.execute(method: :post, url: "#{@api_url}/contents", payload: body, headers:, timeout: 600)
+        response = RestClient::Request.execute(method: :post, url: "#{@api_url}/contents", payload: body.to_json, headers:, timeout: 600)
         raise "NLP Processor returned http status code: #{response.code}" unless response.code == 200
 
         JSON.parse(response.body)['document_id']
