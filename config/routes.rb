@@ -65,6 +65,7 @@ Rails.application.routes.draw do
     get 'notion/all_pages/:organization_id', to: 'notion_integration#all_pages'
     post 'users/reset-password', to: 'users#reset_password'
     post 'users/update-password', to: 'users#update_password'
+    post 'google-integration/index-google-drive', to: 'google_integration#index_google_drive'
 
     namespace :admin do
       get 'history', to: 'search_history#index'

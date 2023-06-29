@@ -19,6 +19,7 @@ const routes = {
   adminHome: '/adminHome',
   setup: '/setup',
   updatePassword: '/reset-password',
+  googleSetup: '/google-setup',
 };
 
 export default routes;

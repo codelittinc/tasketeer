@@ -8,6 +8,7 @@ export const usePageTitle = () => {
     case routes.organization:
     case routes.webCrawler:
     case routes.integration:
+    case routes.googleSetup:
       return 'Training Setup';
     case routes.chat:
       return 'Chat';

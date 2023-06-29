@@ -7,10 +7,10 @@ class ExternalResourceMetadataWorker
     5.minutes
   end
 
-  def perform(organization_id)
+  def perform(organization_id, google_token = nil, google_folder_id = nil)
     Rails.logger.info 'Sending external resource metadata records to nlp processor.'
     external_resources = ExternalResourceMetadata.where(processing: false, organization_id:).order('created_at DESC')
-    return unless external_resources.any?
+    return unless external_resources.any? || google_token.present? || google_folder_id.present?
 
     error = ''
 
@@ -18,7 +18,7 @@ class ExternalResourceMetadataWorker
     set_processing(external_resources, true)
 
     begin
-      process_indexing(external_resources, organization_id)
+      process_indexing(external_resources, organization_id, google_token, google_folder_id)
       set_indexed(external_resources, true)
       Organization.update(organization_id, is_indexed: true)
       Organization.update(organization_id, nlp_indexed: true)
@@ -40,9 +40,9 @@ class ExternalResourceMetadataWorker
 
   private
 
-  def process_indexing(external_resources, organization_id)
+  def process_indexing(external_resources, organization_id, google_token = nil, google_folder_id = nil)
     client = Clients::NlpProcessor::Client.new
-    process_uuid = client.generate_file_index(get_files_content(external_resources), organization_id.to_s)
+    process_uuid = client.generate_file_index(get_files_content(external_resources), organization_id.to_s, google_token, google_folder_id)
     set_error(external_resources, nil)
     set_process_uuid(external_resources, process_uuid)
 
@@ -71,14 +71,14 @@ class ExternalResourceMetadataWorker
   def set_processing(external_resources, processing)
     external_resources.each do |metadata|
       ExternalResourceMetadata.update(metadata.id, processing:)
-      WebPage.update(metadata.web_page_id, is_processing: processing)
+      WebPage.update(metadata.web_page_id, is_processing: processing) if metadata.web_page_id.present?
     end
   end
 
   def set_indexed(external_resources, indexed)
     external_resources.each do |metadata|
       ExternalResourceMetadata.update(metadata.id, indexed:)
-      WebPage.update(metadata.web_page_id, indexed: true)
+      WebPage.update(metadata.web_page_id, indexed: true) if metadata.web_page_id.present?
     end
   end
 

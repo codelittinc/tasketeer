@@ -39,6 +39,7 @@ import AdminHome from './pages/private/AdminHome';
 import SetupPage from './pages/private/Setup';
 import RecoverPassword from './pages/public/RecoverPassword';
 import ResetPassword from './pages/public/ResetPassword';
+import GoogleSetup from './pages/private/GoogleSetup';
 
 export default function App({ cable }) {
   const [pageLoaded, setPageLoaded] = React.useState(false);
@@ -98,6 +99,7 @@ export default function App({ cable }) {
               <Route path={routes.organization} element={<FilesPage />} />
               <Route path={routes.integration} element={<IntegrationPage />} />
               <Route path={routes.webCrawler} element={<WebCrawlerPage />} />
+              <Route path={routes.googleSetup} element={<GoogleSetup />} />
             </Route>
           </Route>
 

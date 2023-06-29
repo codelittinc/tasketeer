@@ -26,7 +26,8 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.2",
     "react-speech-kit": "^3.0.1",
-    "react-svg": "^16.1.17"
+    "react-svg": "^16.1.17",
+    "@react-oauth/google": "0.11.0"
   },
   "devDependencies": {
     "css-tree": "^2.3.1",
