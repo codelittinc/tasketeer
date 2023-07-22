@@ -13,7 +13,12 @@
 #  organization_id :bigint
 #
 class OrganizationFile < ApplicationRecord
+  attribute :indexed
   belongs_to :organization
 
   validates :box_id, presence: true
+
+  def indexed
+    ExternalResourceMetadata.where(box_file_id: box_id).pick(:indexed)
+  end
 end

@@ -198,7 +198,7 @@ export default function FilesPage() {
                       {dayjs(file.created_at).format("YYYY-MM-DD")}
                     </BodyTableCell>
                     <BodyTableCell>
-                      {file.indexed_at ? <>Indexed</> : <>Not Indexed</>}
+                      {file.indexed ? <>Indexed</> : <>Not Indexed</>}
                     </BodyTableCell>
                     <BodyTableCell>
                       <IconButton onClick={() => onClickDelete(file.id)}>
