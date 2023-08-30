@@ -20,6 +20,7 @@ class Organization < ApplicationRecord
   attribute :can_index_files
 
   has_one :gpt_api_key, dependent: :destroy
+  has_one :api_credential, dependent: :destroy
 
   has_many :organization_files, dependent: :destroy
   has_many :user_organizations, dependent: :destroy
