@@ -19,10 +19,20 @@
 #
 class UserSerializer
   include JSONAPI::Serializer
-  attributes :id, :email, :created_at, :selected_organization, :avatar_url, :given_name
+  attributes :id, :email, :created_at, :avatar_url, :given_name
 
   attributes :waiting_for_approval do |object|
     object.selected_organization.blank? ? nil : object.approved_organizations.empty?
+  end
+
+  attributes :selected_organization do |object|
+    {
+      id: object.selected_organization&.id,
+      name: object.selected_organization&.name,
+      api_credential: {
+        id: object.selected_organization&.api_credential&.id
+      }
+    }
   end
 
   attributes :is_admin, &:admin?

@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       end
     end
     resources :roles, only: %i[index]
+    resources :api_credentials
     resources :user_roles, only: %i[create index destroy]
     get 'me', to: 'users#index'
     post 'oauth/slack', to: 'users#slack'

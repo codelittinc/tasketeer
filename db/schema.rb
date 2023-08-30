@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_132206) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_30_005229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "api_credentials", force: :cascade do |t|
+    t.string "secret_key"
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_api_credentials_on_organization_id"
+  end
 
   create_table "bot_settings", force: :cascade do |t|
     t.text "welcome_message"
@@ -190,6 +198,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_132206) do
     t.index ["domain_id"], name: "index_web_pages_on_domain_id"
   end
 
+  add_foreign_key "api_credentials", "organizations"
   add_foreign_key "domains", "organizations"
   add_foreign_key "external_resource_metadata", "organizations"
   add_foreign_key "gpt_api_keys", "organizations"

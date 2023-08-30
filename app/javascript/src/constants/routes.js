@@ -9,6 +9,7 @@ const routes = {
   recoverPassword: '/recover-password',
   organization: '/organization',
   permissions: '/permissions',
+  apiCredentials: '/api-credentials',
   privacy: '/privacy',
   root: '/',
   signup: '/signup',
