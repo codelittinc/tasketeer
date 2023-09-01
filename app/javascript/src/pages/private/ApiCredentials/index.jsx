@@ -9,6 +9,7 @@ import InputField from "../../../components/InputField/InputField";
 import ApiCredentialsService from "../../../services/apiCredentials.service";
 import CopyIcon from "@mui/icons-material/ContentCopy";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import Webhook from "./Webhook";
 
 const ApiCredentials = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
@@ -41,17 +42,15 @@ const ApiCredentials = () => {
         }
       );
 
+      setApiCredential(apiCredential);
       setSecretKey(apiCredential.secret_key);
     }
   };
 
   const handleUpdate = async () => {
-    const potato = await ApiCredentialsService.updateApiCredential(
-      apiCredential.id,
-      {
-        secretKey: secretKey,
-      }
-    );
+    await ApiCredentialsService.updateApiCredential(apiCredential.id, {
+      secretKey: secretKey,
+    });
 
     setSecretKey(apiCredential.secret_key);
   };
@@ -141,6 +140,11 @@ const ApiCredentials = () => {
           </Button>
         </Box>
       </Box>
+      {apiCredential && (
+        <div style={{ marginTop: "20px" }}>
+          <Webhook />
+        </div>
+      )}
     </Container>
   );
 };

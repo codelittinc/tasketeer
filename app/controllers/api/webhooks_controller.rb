@@ -13,7 +13,7 @@ module Api
     end
 
     def create
-      @instance = ApiCredential.new(link:, organization_id:)
+      @instance = Webhook.new(url:, organization_id:)
 
       if @instance.save
         render json: { webhook: @instance }, status: :created
@@ -23,7 +23,7 @@ module Api
     end
 
     def update
-      if @instance.update(link:)
+      if @instance.update(url:)
         render json: { webhook: @instance }, status: :created
       else
         render json: @instance.errors, status: :unprocessable_entity
@@ -33,15 +33,15 @@ module Api
     private
 
     def webhook_params
-      params.require(:webhook).permit(:link, :id)
+      params.require(:webhook).permit(:url, :id)
     end
 
     def set_instance
-      @instance = ApiCredential.find_by(id: params[:id], organization_id:)
+      @instance = Webhook.find_by(id: params[:id], organization_id:)
     end
 
-    def link
-      params[:link]
+    def url
+      webhook_params[:url]
     end
 
     def organization_id

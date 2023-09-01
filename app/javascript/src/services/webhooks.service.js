@@ -3,18 +3,22 @@ import ApiService from './api.service';
 
 // transform this file into a webhook
 const Actions = {
-  apiSecrets: 'api/api_credentials',
+  webhooks: 'api/webhooks',
 };
 
-class ApiCredentialsService {
-  static async createApiCredential(params) {
+class WebhooksService {
+  static async createWebhook(params) {
     return ApiService.executeRequest(async () => {
+      debugger
       const body = {
-        secret_key: params.secretKey,
+        webhook: {
+          url: params.url,
+        }
       }
-      const response = await apiClient.post(Actions.apiSecrets, body);
 
-      const { api_credential: apiCredential } = response.data;
+      const response = await apiClient.post(Actions.webhooks, body);
+
+      const { webhook: apiCredential } = response.data;
 
       return {
         apiCredential,
@@ -23,14 +27,16 @@ class ApiCredentialsService {
     });
   }
 
-  static async updateApiCredential(id, params) {
+  static async updateWebhook(id, params) {
     return ApiService.executeRequest(async () => {
       const body = {
-        secret_key: params.secretKey,
+        webhook: {
+          url: params.url,
+        }
       }
-      const response = await apiClient.patch(`${Actions.apiSecrets}/${id}`, body);
+      const response = await apiClient.patch(`${Actions.webhooks}/${id}`, body);
 
-      const { api_credential: apiCredential } = response.data;
+      const { webhook: apiCredential } = response.data;
       debugger
 
       return {
@@ -40,18 +46,18 @@ class ApiCredentialsService {
     });
   }
 
-  static async getApiCredential(id) {
+  static async getWebhook(id) {
     return ApiService.executeRequest(async () => {
-      const response = await apiClient.get(`${Actions.apiSecrets}/${id}`);
+      const response = await apiClient.get(`${Actions.webhooks}/${id}`);
 
-      const { api_credential: apiCredential } = response.data;
+      const { webhook } = response.data;
 
       return {
-        apiCredential,
+        webhook,
         errorMessage: null,
       };
     });
   }
 }
 
-export default ApiCredentialsService;
+export default WebhooksService;

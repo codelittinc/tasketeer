@@ -31,6 +31,9 @@ class UserSerializer
       name: object.selected_organization&.name,
       api_credential: {
         id: object.selected_organization&.api_credential&.id
+      },
+      webhook: {
+        id: object.selected_organization&.webhook&.id
       }
     }
   end
